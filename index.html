@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Studio Games | Portfólio de Guilherme Silva</title>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4389870681468404"
+            crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --text-main: #c9d1d9;
+            --text-accent: #58a6ff;
+            --btn-green: #238636;
+            --btn-pix: #32bcad;
+        }
+
+        body {
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            text-align: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        h1 { color: var(--text-accent); margin-bottom: 5px; font-size: 2.5rem; }
+        .subtitle { color: #8b949e; margin-bottom: 30px; font-size: 1.1rem; }
+
+        /* Estilização do Bloco AdSense */
+        .ads-container {
+            margin: 20px 0;
+            padding: 10px;
+            background: #21262d;
+            border-radius: 8px;
+            border: 1px dashed #484f58;
+            min-height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bio { line-height: 1.6; margin: 25px 0; }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: transform 0.2s, background 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn:active { transform: scale(0.95); }
+
+        .btn-github { background-color: var(--btn-green); }
+        .btn-github:hover { background-color: #2ea043; }
+
+        .btn-pix { background-color: var(--btn-pix); color: #0d1117; }
+        .btn-pix:hover { background-color: #45d6c6; }
+
+        /* Seção de Apoio / Doação */
+        .support-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .qr-code {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 15px 0;
+            box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+        }
+
+        .pix-text { font-size: 0.85rem; color: #8b949e; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Visual Studio Games</h1>
+        <p class="subtitle">Desenvolvimento de Software, Cyber Security & Estratégias de Trading</p>
+
+        <div class="ads-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-4389870681468404"
+                 data-ad-slot="5775198406"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="bio">
+            <p>Olá, eu sou <strong>Guilherme Silva</strong> (Kovaliosky DeV).</p>
+            <p>Especialista em Python, GDevelop e automação de sistemas para o mercado financeiro.</p>
+        </div>
+
+        <div class="btn-group">
+            <a href="https://github.com/VisualStudioandSecurity" class="btn btn-github" target="_blank">Ver Projetos GitHub</a>
+            <button class="btn btn-pix" onclick="copyPix()">Copiar Chave PIX</button>
+        </div>
+
+        <div class="support-section">
+            <p style="color: var(--text-accent); font-weight: bold;">Apoie o Desenvolvimento</p>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=10267545266" alt="QR Code PIX">
+            </div>
+            <p class="pix-text">Sua contribuição ajuda a manter os servidores e ferramentas de Trading ativos.</p>
+        </div>
+    </div>
+
+    <script>
+        function copyPix() {
+            const pixKey = "10267545266";
+            navigator.clipboard.writeText(pixKey).then(() => {
+                alert("Chave PIX (CPF) copiada para a área de transferência! Obrigado pelo apoio.");
+            });
+        }
+    </script>
+
+</body>
+</html>
