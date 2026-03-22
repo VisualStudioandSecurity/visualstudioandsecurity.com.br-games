@@ -1,118 +1,60 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graffiti Canvas | Visual Studio Games</title>
-    <style>
-        :root { --neon-blue: #00f3ff; --cyber-black: #050505; }
-        body {
-            margin: 0; background: var(--cyber-black); color: white;
-            font-family: 'Segoe UI', sans-serif; display: flex;
-            flex-direction: column; align-items: center; overflow: hidden;
-            user-select: none; /* Impede selecionar textos */
-        }
-        .controls {
-            padding: 15px; background: #111; width: 100%; display: flex;
-            gap: 20px; justify-content: center; border-bottom: 2px solid var(--neon-blue);
-            z-index: 10;
-        }
-        canvas { cursor: crosshair; touch-action: none; }
-        input[type="color"] { border: none; width: 40px; height: 40px; cursor: pointer; background: none; }
-        .btn-clear { background: #ff0055; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        .status { position: absolute; bottom: 10px; left: 10px; font-size: 12px; color: var(--neon-blue); opacity: 0.7; }
-    </style>
-</head>
-<body>
+### 📊 Estatísticas da Organização Visual Studio & Security
 
-    <div class="controls">
-        <label>Cor: <input type="color" id="colorPicker" value="#00f3ff"></label>
-        <label>Tamanho: <input type="range" id="sizePicker" min="5" max="50" value="15"></label>
-        <button class="btn-clear" id="clearBtn">Limpar Mural</button>
-    </div>
+Estamos focados em desenvolvimento e segurança agressiva. Abaixo, nossas principais linguagens e atividades.
 
-    <canvas id="paintCanvas"></canvas>
-    <div class="status">Proteção Ativa: Visual Studio & Security</div>
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=VisualStudioandSecurity&layout=compact&theme=tokyonight&hide=html,css&count_private=true" alt="Top Langs - VS Games & Security" />
+</p>
 
-    <script>
-        const canvas = document.getElementById('paintCanvas');
-        const ctx = canvas.getContext('2d');
-        const colorPicker = document.getElementById('colorPicker');
-        const sizePicker = document.getElementById('sizePicker');
-        const clearBtn = document.getElementById('clearBtn');
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=VisualStudioandSecurity&show_icons=true&theme=tokyonight&hide_rank=true" alt="Estatísticas VS Games & Security" />
+</p>
+# 🕹️ Visual Studio Games & Security 🛡️
+**Senior Developer | Cybersecurity Specialist | Game Dev**
 
-        let painting = false;
+Bem-vindo ao repositório central da **Visual Studio Games**. Aqui hospedo meus experimentos de jogos 2D "no-code" e ferramentas de desenvolvimento.
 
-        // --- CAMADA DE PROTEÇÃO TÉCNICA ---
-        // Bloquear botão direito
-        document.addEventListener('contextmenu', event => event.preventDefault());
+---
 
-        // Bloquear F12 e atalhos de inspeção
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0))) {
-                return false;
-            }
-        }
+## 🚀 Acesso Rápido
+🔗 **Site Oficial:** https://visualstudioandsecurity.github.io/VisualStudioGame/
 
-        function drawWatermark() {
-            ctx.save();
-            ctx.font = "14px monospace";
-            ctx.fillStyle = "rgba(0, 243, 255, 0.2)";
-            ctx.fillText("© 2026 Visual Studio Games - Kovaliosky DeV", canvas.width - 350, canvas.height - 20);
-            ctx.restore();
-        }
+---
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight - 70;
-            ctx.lineCap = 'round';
-            ctx.lineJoin = 'round';
-            drawWatermark();
-        }
+## 🎮 Galeria de Jogos (Web)
+Todos os jogos abaixo foram desenvolvidos com foco em performance e estética Neon/Cyber.
 
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+| Jogo | Descrição | Link |
+| :--- | :--- | :--- |
+| **Graffiti Canvas** | Mural interativo com gestão de tinta. | [Jogar](https://www.visualstudioandsecurity.com.br/graffiti-canvas/) |
+| **Neon Snaker** | O clássico Snake com visual retro-futurista. | [Jogar](https://www.visualstudioandsecurity.com.br/neon-snaker/) |
+| **Cyber Defense** | Defenda o sistema contra invasões maliciosas. | [Jogar](https://www.visualstudioandsecurity.com.br/cyber-defense/) |
+| **Breakout** | Destrua blocos em um ambiente de alta velocidade. | [Jogar](https://www.visualstudioandsecurity.com.br/breakout/) |
+| **Space Invaders** | Combate espacial clássico redefinido. | [Jogar](https://www.visualstudioandsecurity.com.br/space-invaders/) |
+| **Pedro Raccoon** | Aventura casual com o guaxinim mais famoso. | [Jogar](https://www.visualstudioandsecurity.com.br/pedro-raccoon/) |
 
-        function startPosition(e) {
-            painting = true;
-            draw(e);
-        }
+---
 
-        function finishedPosition() {
-            painting = false;
-            ctx.beginPath();
-        }
+## 🛠️ Tecnologias & Ferramentas
+- **GDevelop:** Core engine para lógica de jogos.
+- **Cybersecurity:** Pentesting, Auditoria de Código e Segurança Web.
+- **Web:** HTML5, CSS3 (Neon UI), JavaScript, TailwindCSS.
+- **SEO & Monetização:** Configurado com `ads.txt` e `sitemap.xml`.
 
-        function draw(e) {
-            if (!painting) return;
+---
 
-            ctx.lineWidth = sizePicker.value;
-            ctx.strokeStyle = colorPicker.value;
+## 📁 Estrutura do Repositório
+- `/graffiti-canvas`: Aplicação de arte urbana interativa.
+- `/language-lab`: (Em breve) App de flashcards para idiomas.
+- `index.html`: Portal principal de entrada.
+- `ads.txt`: Verificação de parceiros de anúncios.
 
-            const x = e.clientX || (e.touches ? e.touches[0].clientX : 0);
-            const y = (e.clientY || (e.touches ? e.touches[0].clientY : 0)) - 70;
+---
 
-            ctx.lineTo(x, y);
-            ctx.stroke();
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            
-            // Garante que a marca d'água fique sempre visível
-            drawWatermark();
-        }
+## 💬 Contato
+- **GitHub:** [@VisualStudioAndSecurity](https://github.com/VisualStudioAndSecurity)
+- **Branding:** GuiTrader / Kovaliosky DeV
 
-        canvas.addEventListener('mousedown', startPosition);
-        canvas.addEventListener('mouseup', finishedPosition);
-        canvas.addEventListener('mousemove', draw);
-
-        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startPosition(e); });
-        canvas.addEventListener('touchend', finishedPosition);
-        canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e); });
-
-        clearBtn.addEventListener('click', () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawWatermark();
-        });
-    </script>
-</body>
-</html>
+---
+> [!IMPORTANT]
+> Todos os projetos aqui são protegidos e otimizados. Se encontrar algum bug ou vulnerabilidade, sinta-se à vontade para abrir uma Issue.
