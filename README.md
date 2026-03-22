@@ -17,7 +17,7 @@ Bem-vindo ao repositório central da **Visual Studio Games**. Aqui hospedo meus 
 ---
 
 ## 🚀 Acesso Rápido
-🔗 **Site Oficial:** [visualstudioandsecurity.com. br](visualstudioandsecurity.com.br)
+🔗 **Site Oficial:** https://visualstudioandsecurity.github.io/VisualStudioGame/
 
 ---
 
