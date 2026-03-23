@@ -3,139 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visual Studio Games | Guilherme Silva</title>
+    <title>Visual Studio Games | Secured Portal</title>
     
     <style>
         :root { 
-            --bg: #0d1117; --card: #161b22; --accent: #58a6ff; 
-            --green: #238636; --gray: #8b949e; --neon: #00f2ff;
+            --bg: #050505; --card: #0d1117; --accent: #58a6ff; 
+            --green: #238636; --gray: #8b949e; --neon: #00f2ff; --red: #ff0055;
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif; 
+            font-family: 'Outfit', 'Segoe UI', sans-serif; 
             background-color: var(--bg); color: white;
             margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center;
             text-align: center; min-height: 100vh;
-            /* Proteção contra seleção de texto */
-            user-select: none;
-            -webkit-user-select: none;
+            user-select: none; -webkit-user-select: none;
+            overflow-x: hidden;
         }
 
-        .container { width: 92%; max-width: 1000px; margin: 30px auto; }
+        /* Background Animado Estilo Matrix */
+        #matrix-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; opacity: 0.1; pointer-events: none;
+        }
+
+        .container { width: 92%; max-width: 1200px; margin: 50px auto; z-index: 1; }
 
         h1 {
-            font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px;
-            text-shadow: 0 0 10px var(--neon); color: white;
-            margin-bottom: 5px;
+            font-size: 2.8rem; text-transform: uppercase; letter-spacing: 4px;
+            text-shadow: 0 0 20px var(--neon); color: white; margin-bottom: 0;
+        }
+
+        .badge-security {
+            font-family: monospace; font-size: 0.8rem; color: var(--neon);
+            border: 1px solid var(--neon); padding: 4px 12px; border-radius: 20px;
+            text-transform: uppercase; letter-spacing: 1px;
         }
 
         .section-title { 
-            color: var(--neon); font-size: 1.1rem; margin: 40px 0 20px; 
+            color: var(--neon); font-size: 1rem; margin: 60px 0 30px; 
             text-transform: uppercase; border-bottom: 1px solid #30363d; 
-            display: inline-block; padding-bottom: 5px; 
+            display: inline-block; padding-bottom: 8px; letter-spacing: 2px;
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px; width: 100%; margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; width: 100%;
         }
 
         .game-link { text-decoration: none; color: inherit; display: block; }
         
         .game-card {
-            background: var(--card); border-radius: 12px; border: 1px solid #30363d;
-            overflow: hidden; transition: 0.3s; text-align: left;
+            background: var(--card); border-radius: 16px; border: 1px solid #30363d;
+            overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: left; position: relative;
         }
 
-        .game-link:hover .game-card { transform: translateY(-5px); border-color: var(--neon); }
-        .game-card img { width: 100%; height: 160px; object-fit: cover; background: #000; }
-        .card-content { padding: 15px; }
-        .card-content h3 { margin: 5px 0; color: var(--neon); font-size: 1.1rem; }
-        .card-content p { color: var(--gray); font-size: 0.85rem; }
+        .game-link:hover .game-card { 
+            transform: translateY(-10px); 
+            border-color: var(--neon); 
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);
+        }
 
-        .btn-group { margin: 25px 0; display: flex; justify-content: center; gap: 10px; }
+        .game-card img { width: 100%; height: 180px; object-fit: cover; background: #000; transition: 0.5s; }
+        .game-link:hover img { transform: scale(1.05); }
+
+        .card-content { padding: 20px; }
+        .card-content h3 { margin: 0 0 10px; color: var(--neon); font-size: 1.2rem; }
+        .card-content p { color: var(--gray); font-size: 0.9rem; line-height: 1.5; }
+
+        .status-tag {
+            padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: bold;
+        }
+
+        .btn-group { margin: 40px 0; display: flex; justify-content: center; gap: 15px; }
         .btn {
-            padding: 12px 20px; border-radius: 6px; font-weight: bold;
+            padding: 14px 28px; border-radius: 8px; font-weight: bold;
             text-decoration: none; color: white; border: none; cursor: pointer;
-            transition: 0.2s;
+            transition: 0.3s; display: flex; align-items: center; gap: 10px;
         }
-        .btn-github { background: var(--green); }
-        .btn-github:hover { background: #2ea043; }
-        .btn-pix { background: #32bcad; color: #0d1117; }
-        .btn-pix:hover { background: #2aa395; }
+        .btn-github { background: #24292f; border: 1px solid #30363d; }
+        .btn-github:hover { background: #30363d; border-color: var(--neon); }
+        .btn-pix { background: var(--neon); color: #050505; }
+        .btn-pix:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--neon); }
 
-        footer { width: 100%; padding: 20px 0; border-top: 1px solid #30363d; background: #090c10; margin-top: auto; }
-        .apache-footer { margin-top: 15px; font-size: 13px; color: #888; line-height: 1.6; }
-        .apache-footer a { color: var(--neon); text-decoration: none; }
+        footer { width: 100%; padding: 40px 0; border-top: 1px solid #30363d; background: #050505; margin-top: auto; }
+        .apache-footer { font-size: 12px; color: #555; margin-top: 10px; }
     </style>
 </head>
 <body>
+
+    <canvas id="matrix-bg"></canvas>
+
     <div class="container">
+        <div class="badge-security">Security Protocol: Active</div>
         <h1>Visual Studio Games</h1>
-        <p style="color: var(--gray); font-weight: bold;">Senior Developer & Cyber Security</p>
+        <p style="color: var(--gray); font-weight: bold; letter-spacing: 1px;">SENIOR DEVELOPER • CYBERSECURITY SPECIALIST</p>
 
         <div class="btn-group">
-            <a href="https://github.com/VisualStudioAndSecurity" class="btn btn-github" target="_blank">GitHub</a>
-            <button onclick="copyPix()" class="btn btn-pix">Apoiar PIX</button>
+            <a href="https://github.com/VisualStudioAndSecurity" class="btn btn-github" target="_blank">
+                <span>View GitHub</span>
+            </a>
+            <button onclick="copyPix()" class="btn btn-pix">Apoiar Projeto (PIX)</button>
         </div>
 
-        <div class="section-title">[02] Projetos Disponíveis</div>
+        <div class="section-title">0x01_Projetos_Ativos</div>
         
         <div class="gallery">
             <a href="graffiti-canvas/" class="game-link">
                 <div class="game-card">
-                    <img src="thumb_graffiti.jpg" onerror="this.src='https://via.placeholder.com/300x160/161b22/00f2ff?text=Graffiti+Canvas'">
+                    <img src="https://images2.imgbox.com/6a/e2/mR1fR1Lz_o.png" alt="Graffiti Canvas">
                     <div class="card-content">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <h3>Graffiti Canvas</h3>
-                            <span style="background: #ef4444; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold;">LIVE</span>
+                            <h3>Visual Graffiti</h3>
+                            <span class="status-tag" style="background: var(--red);">LIVE</span>
                         </div>
-                        <p>Simulador de graffiti digital com marca d'água de autoria e proteção contra cópia.</p>
+                        <p>Simulador de graffiti profissional com marca d'água dinâmica e proteção de autoria.</p>
                     </div>
                 </div>
             </a>
 
-            <div class="game-card" style="opacity: 0.6; cursor: not-allowed;">
-                <img src="https://via.placeholder.com/300x160/161b22/8b949e?text=Cyber+Defense+Bot">
-                <div class="card-content">
-                    <h3>Cyber Defense Bot</h3>
-                    <p>Em breve: Ferramenta de análise de vulnerabilidades para trading bots.</p>
+            <a href="neon-snaker/" class="game-link">
+                <div class="game-card">
+                    <img src="https://images2.imgbox.com/3d/8c/mG4W3O8V_o.png" alt="Neon Snaker">
+                    <div class="card-content">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3>Neon Snaker</h3>
+                            <span class="status-tag" style="background: var(--green);">STABLE</span>
+                        </div>
+                        <p>Desafio de reflexo em ambiente neon. Colete pacotes de dados sem corromper o sistema.</p>
+                    </div>
                 </div>
-            </div>
+            </a>
+
+            <a href="cyber-defense/" class="game-link">
+                <div class="game-card">
+                    <img src="https://images2.imgbox.com/fb/34/q8I9X8s5_o.png" alt="Cyber Defense">
+                    <div class="card-content">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3>Cyber Defense</h3>
+                            <span class="status-tag" style="background: var(--neon); color: #000;">HOT</span>
+                        </div>
+                        <p>Neutralize ameaças de intrusão em tempo real neste teste de velocidade de reação.</p>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
 
     <footer>
-        <div style="color: var(--neon); font-family: monospace; font-size: 14px;">[SYSTEM_LOG]: PROTEÇÃO ATIVA</div>
-        
+        <div style="color: var(--neon); font-family: monospace; font-size: 12px; letter-spacing: 2px;">
+            [ ENCRYPTION: AES-256 ] [ IDENTITY: KOVALIOSKY DEV ]
+        </div>
         <div class="apache-footer">
-            <p>&copy; 2026 <strong>Visual Studio Games</strong>. Todos os direitos reservados.</p>
-            <p>Licenciado sob <a href="LICENSE">Apache License 2.0</a>.</p>
-            <p style="font-size: 11px; opacity: 0.6;">Kovaliosky DeV | Security Specialist Identity</p>
+            <p>&copy; 2026 Visual Studio Games. Licenciado sob Apache License 2.0.</p>
+            <p>Proteção de Domínio Ativa: visualstudioandsecurity.com.br</p>
         </div>
     </footer>
 
     <script>
-        /* --- BLINDAGEM DE CYBERSECURITY --- */
-        
-        // 1. Bloqueio de Botão Direito
-        document.addEventListener('contextmenu', e => e.preventDefault());
+        // --- EFEITO BACKGROUND MATRIX ---
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
 
-        // 2. Bloqueio de Teclas de Inspeção (F12, Ctrl+U, Ctrl+Shift+I)
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00f2ff";
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+
+        // --- BLINDAGEM DE CYBERSECURITY ---
+        document.addEventListener('contextmenu', e => e.preventDefault());
         document.onkeydown = function(e) {
-            if(e.keyCode == 123) return false; // F12
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
-            if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false; // Ctrl+Shift+I/J
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73) || (e.ctrlKey && e.keyCode == 85)) return false;
         }
 
-        // Função do PIX
+        // --- FUNÇÃO DO PIX ---
         function copyPix() {
             const pixKey = "10267545266";
             navigator.clipboard.writeText(pixKey).then(() => {
-                alert("Chave PIX copiada com sucesso! Obrigado pelo apoio.");
+                alert("ACESSO AUTORIZADO: Chave PIX copiada. Obrigado por apoiar a VSG!");
             });
         }
+
+        // --- ANTI-DEBUGGER LOOP ---
+        setInterval(function() {
+            (function(a) {return (function(a) {return (function(a) {return a(a);})(a);})(a);})(function(a) {
+                const start = new Date();
+                debugger;
+                const end = new Date();
+                if (end - start > 100) { window.location.reload(); }
+            });
+        }, 1000);
     </script>
 </body>
 </html>
