@@ -30,7 +30,7 @@ Todos os jogos abaixo foram desenvolvidos com foco em performance e estética Ne
 | **Neon Snaker** | O clássico Snake com visual retro-futurista. | [Jogar](https://www.visualstudioandsecurity.com.br/neon-snaker/) |
 | **Cyber Defense** | Defenda o sistema contra invasões maliciosas. | [Jogar](https://www.visualstudioandsecurity.com.br/cyber-defense/) |
 | **Breakout** | Destrua blocos em um ambiente de alta velocidade. | [Jogar](https://www.visualstudioandsecurity.com.br/breakout/) |
-| Space Shooter - destrua naves e protega a sua - 
+| | **Space Shooter** | Destrua naves e protega a sua  | [Jogar]https://visualstudioandsecurity.github.io/VisualGameHub/space-shooter.html
 |
 
 ---
