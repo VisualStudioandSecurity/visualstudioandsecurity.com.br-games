@@ -31656,6 +31656,20 @@ gameState.closeAdScreen = function() {
     
     // Feedback visual opcional
     alert("CRÉDITOS RESGATADOS COM SUCESSO!");
+ // Protocolo de Persistência
+function saveGame() {
+    localStorage.setItem('kv_enterprise_coins', gameState.coins);
+    console.log("DADOS_SALVOS: Saldo atualizado no LocalStorage.");
+}
+
+// Carregar saldo ao iniciar
+window.onload = () => {
+    const savedCoins = localStorage.getItem('kv_enterprise_coins');
+    if (savedCoins) {
+        gameState.coins = parseInt(savedCoins);
+        console.log("SISTEMA_CARREGADO: Saldo recuperado.");
+    }
+};
 };script>
  <div id="ad-screen" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-[#0f1923]/95 backdrop-blur-sm">
     <div class="bg-[#1a2a3a] border-2 border-amber-500 p-8 rounded-lg max-w-sm w-full text-center shadow-[0_0_50px_rgba(245,158,11,0.2)] relative overflow-hidden">
